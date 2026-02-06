@@ -19,3 +19,13 @@ module "security_groups" {
   environment       = "dev"
   allowed_ssh_cidr  = "204.107.153.71/32"
 }
+
+module "ec2" {
+  source = "../../modules/ec2"
+
+  environment       = "dev"
+  subnet_id          = module.vpc.private_subnet_ids[0]
+  security_group_id = module.security_groups.web_sg_id
+  instance_type     = "t3.micro"
+  ami_id            = "ami-0c02fb55956c7d316" # Amazon Linux 2 (us-east-1)
+}

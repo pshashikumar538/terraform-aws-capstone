@@ -11,3 +11,11 @@ module "vpc" {
   private_subnets = ["10.0.101.0/24", "10.0.102.0/24"]
   azs             = ["us-east-1a", "us-east-1b"]
 }
+
+module "security_groups" {
+  source = "../../modules/security-groups"
+
+  vpc_id            = module.vpc.vpc_id
+  environment       = "dev"
+  allowed_ssh_cidr  = "204.107.153.71/32"
+}

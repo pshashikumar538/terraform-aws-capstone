@@ -29,3 +29,12 @@ module "ec2" {
   instance_type     = "t3.micro"
   ami_id            = "ami-0c02fb55956c7d316" # Amazon Linux 2 (us-east-1)
 }
+
+module "alb" {
+  source = "../../modules/alb"
+
+  environment          = "dev"
+  vpc_id               = module.vpc.vpc_id
+  public_subnet_ids    = module.vpc.public_subnet_ids
+  target_instance_id   = module.ec2.instance_id
+}

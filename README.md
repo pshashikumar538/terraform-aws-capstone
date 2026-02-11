@@ -15,20 +15,6 @@ The purpose of this project is to:
 
 ---
 
-## Project Structure
-
-terraform-aws-capstone/
-├── dev/
-├── prod/
-├── modules/
-│   ├── vpc/
-│   ├── asg/
-│   └── alb/
-├── .gitignore
-└── README.md
-
----
-
 ## Prerequisites
 
 Before running this project, ensure you have:
